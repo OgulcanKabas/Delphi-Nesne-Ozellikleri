@@ -1,0 +1,148 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus;
+
+type
+  TForm1 = class(TForm)
+    Memo1: TMemo;
+    MainMenu1: TMainMenu;
+    MainMenzellikleri1: TMenuItem;
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Label3: TLabel;
+    Edit2: TEdit;
+    Button1: TButton;
+    ScrollBar1: TScrollBar;
+    Label4: TLabel;
+    Label5: TLabel;
+    ComboBox1: TComboBox;
+    Label6: TLabel;
+    ListBox1: TListBox;
+    Label7: TLabel;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    Label8: TLabel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    Label9: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure MainMenzellikleri1Click(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure ScrollBar1Change(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+   var menutiklandi,labeltiklandi : Boolean;
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+
+  if (edit1.Text = '' ) or (edit2.Text = '') then
+  begin
+    Application.MessageBox('Boþ veri býrakmayýnýz.','')
+  end
+  else
+
+
+    Application.MessageBox('Veriler kayýt edildi.','')
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
+        Memo1.Clear;
+       Memo1.Lines.Add('Combobox ile kullanýcýya seçmesi için seçenkerler ekleyebilirsiniz. Properties > Items kýsmýnda istenilen seçenekler eklenebilir.Ayrýca,kodla Comboboxismi.Items.Add komutu ile de eklenebilir')
+end;
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+Memo1.Clear;
+end;
+
+
+
+procedure TForm1.Label1Click(Sender: TObject);
+begin
+    menutiklandi :=false;
+  if labeltiklandi = false then
+  begin
+      Memo1.Clear;
+      Memo1.Lines.Add('Labeller etiket  olarak kullanýlýrlar. Caption özelliðinden görünmesini istediðiniz texti yazabilirsiniz. Kullanýcý için Editlere(Ýnputboxlara) giriþleri belirleyebilirler. Örneðin öðrenci adý ve vize notlarý programlarý yapýlacak ve 2 adet Edit var.');
+      Memo1.Lines.Add('Hangisinin öðrenci adý hangisinin not giriþi olduðunu belirtmek için kullanýlabilirler. ');    Memo1.Lines.Add('Hangisinin öðrenci adý hangisinin not giriþi olduðunu belirtmek için kullanýlabilirler. ');
+      Memo1.Lines.Add('Buttonlar ile editlere girilen verilere iþlem yaptýrýlabilir. Örneðin, girilen verilerin gönderilmesi, eklenmesi v.b. ');
+      Memo1.Lines.Add(' ' );
+      Memo1.Lines.Add('Yan tarafta anlatýlan örneðe ulaþabilirsiniz.' );
+      Edit1.Visible :=True;
+      Edit2.Visible :=True;
+      Label2.Visible :=True;
+      Label3.Visible :=True;
+      Button1.Visible :=True;
+      labeltiklandi := true;
+      Label4.Visible :=true;
+      Label6.Visible :=true;
+      Combobox1.Visible:=True;
+      Scrollbar1.Visible :=true;
+      Listbox1.Visible:=True;
+  end;
+
+    end;
+
+procedure TForm1.ListBox1Click(Sender: TObject);
+begin
+  Memo1.Clear;
+  Memo1.Lines.Add('ListBox nesnesinde kullanýcýya veri listeleyebilirsiniz. Items sekmesinden listelenecek verileri girebilirsiniz. Memodan farký kullanýcýlarýn yalnýzca verilen seçenekler üzerinde seçim yapabilmesidir.Ýnput giriþi yapýlmaz.');
+end;
+
+procedure TForm1.MainMenzellikleri1Click(Sender: TObject);
+begin
+
+    labeltiklandi := false;
+  if menutiklandi = false then
+    begin
+           Memo1.Clear;
+           Memo1.Lines.Add('Main Menü nesnesi üzerine çift týklayýnýz.');
+           Memo1.Lines.Add('Karþýnýza gelen her bir boþluk  TMenuItem olarak adlandýrýlýr.  Bu nesnelere sað týklayarak(click) > Insert komutuna basarak yeni menüler oluþturabilirsiniz. Bu menülere Properties kýsmýndaki Caption  kýsmýndan adlandýrma yapabilirsiniz.');
+           menutiklandi := true;
+     end;
+
+       end;
+
+procedure TForm1.RadioButton1Click(Sender: TObject);
+begin
+  Memo1.Clear;
+  Memo1.Lines.Add('Radiobutton seçenlerinde yalnýzca 1 button seçilebilir. Örneðin  bir kiþi için yalnýzca 1 cinsiyet seçilebilir.');
+end;
+
+procedure TForm1.RadioButton2Click(Sender: TObject);
+begin
+  Memo1.Lines.Add('Radiobutton seçenlerinde yalnýzca 1 button seçilebilir. Örneðin  bir kiþi için yalnýzca 1 cinsiyet seçilebilir.');
+end;
+
+procedure TForm1.ScrollBar1Change(Sender: TObject);
+begin
+    Memo1.Clear;
+    Label5.Visible :=true;
+    Memo1.Lines.Add('ScrollBar nesnesi ile kaydýrmalý olarak deðer kullanýcýya deðer girdirebilirsiniz. Properties üzerinden Max ve Min komutlarý ile üretilecek uç deðerleri belirleyebilirsiniz. ');
+    label5.Caption := inttostr(Scrollbar1.Position);
+end;
+
+end.
